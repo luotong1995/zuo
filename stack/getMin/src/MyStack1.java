@@ -36,7 +36,7 @@ public class MyStack1 {
         }
         return this.stackMin.peek();
     }
-    public static void main(String[] srgs){
+    public static void main(String[] args){
         MyStack1 s1 = new MyStack1();
         s1.push(4);
         System.out.println(s1.getmin());

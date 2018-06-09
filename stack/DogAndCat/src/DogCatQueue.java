@@ -78,7 +78,7 @@ public class DogCatQueue {
         q.add(d4);
         q.add(c4);
 
-        System.out.println(q.isEmpty() + "" + q.poolAll() + q.pollCat());
+        System.out.println(q.isEmpty() + " " + q.poolAll() + " " + q.pollCat());
     }
 
 }

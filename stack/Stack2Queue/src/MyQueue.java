@@ -12,6 +12,7 @@ public class MyQueue {
     public void add(int newNum){
         stack1.push(newNum);
     }
+
     public int poll(){
         if(stack1.isEmpty() && stack2.isEmpty()){
             throw new RuntimeException("Queue is empty");
