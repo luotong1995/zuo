@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class Solution {
     public static Node reverse_List_everyi(Node head, int k){
 
@@ -28,6 +30,45 @@ public class Solution {
             length ++;
         }
         return new_head;
+    }
+
+    // 使用栈结构实现逆序，每次将节点押入栈中，当栈中的长度为k的时候，就将其中的元素pop出来然后进行逆序
+    public static Node reverse_List_everyi2(Node head,int k){
+        if(k < 2){
+            return head;
+        }
+        Stack<Node> stack = new Stack<>();
+        Node new_head = null;
+        Node cur = head;
+        Node pre = null;
+        Node next = null;
+        while(cur != null){
+            next = cur.next;
+            stack.push(cur);
+            if(stack.size() == k){
+                pre = reversebyStack(stack,pre,next);
+                if (new_head == null){
+                    new_head = cur;
+                }
+            }
+            cur = next;
+        }
+        return new_head;
+    }
+
+    public static Node reversebyStack(Stack<Node> stack, Node pre, Node next){
+        Node cur = stack.pop();
+        if(pre != null){
+            pre.next = cur;
+        }
+        Node temp = null;
+        while(!stack.isEmpty()){
+            temp = stack.pop();
+            cur.next = temp;
+            cur = temp;
+        }
+        cur.next = next;
+        return cur;
     }
 
 
@@ -91,7 +132,7 @@ public class Solution {
 
         print_list(head);
         System.out.println("----------");
-        head = reverse_List_everyi(head,2);
+        head = reverse_List_everyi2(head,2);
         print_list(head);
         System.out.println("----------");
 
